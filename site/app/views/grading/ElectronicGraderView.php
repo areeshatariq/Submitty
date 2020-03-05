@@ -134,7 +134,7 @@ class ElectronicGraderView extends AbstractView {
                 $peer_percentage = 0;
                 $peer_total = 0;
                 $peer_graded = 0;
-                
+
                 if ($peer_count > 0 && array_key_exists("stu_grad", $sections)) {
                     $peer_percentage = number_format(($sections['stu_grad']['graded_components'] / $sections['stu_grad']['total_components']) * 100, 1);
                     $peer_total =  floor($sections['stu_grad']['total_components'] / $peer_count);
@@ -273,10 +273,10 @@ HTML;
 			<div style="padding-left:20px;padding-bottom: 10px;border-radius:3px;padding-right:20px;">
 				<table class="table table-striped table-bordered persist-area" id="content_upload_table">
 					<tr>
-				        <td style = "cursor:pointer;" width="25%" id="user_down">User &darr;</td>
-				        <td style = "cursor:pointer;" width="25%" id="upload_down">Upload Timestamp</td>
-				        <td style = "cursor:pointer;" width="25%" id="submission_down">Submission Timestamp</td>
-				        <td style = "cursor:pointer;" width="25%" id="filepath_down">Filepath</td>
+				        <th style = "cursor:pointer;width:25%;" id="user_down">User &darr;</th>
+				        <th style = "cursor:pointer;width:25%;" id="upload_down">Upload Timestamp</th>
+				        <th style = "cursor:pointer;width:25%;" id="submission_down">Submission Timestamp</th>
+				        <th style = "cursor:pointer;width:25%;" id="filepath_down">Filepath</th>
 					</tr>
 HTML;
 
@@ -388,7 +388,7 @@ HTML;
         // function => maps to a macro in Details.twig:render_student
         $columns = [];
         if ($peer) {
-            $columns[]         = ["width" => "5%",  "title" => "",                 "function" => "index"];
+            $columns[]         = ["width" => "5%",  "title" => "#",                "function" => "index"];
             $columns[]         = ["width" => "30%", "title" => "Student",          "function" => "user_id_anon"];
 
             if ($gradeable->getAutogradingConfig()->getTotalNonHiddenNonExtraCredit() !== 0) {
@@ -406,20 +406,20 @@ HTML;
         else {
             if ($gradeable->isTeamAssignment()) {
                 if ($show_edit_teams) {
-                    $columns[] = ["width" => "2%",  "title" => "",                 "function" => "index"];
+                    $columns[] = ["width" => "2%",  "title" => "#",                "function" => "index"];
                     $columns[] = ["width" => "8%",  "title" => "Section",          "function" => "section"];
                     $columns[] = ["width" => "5%",  "title" => "Edit Teams",       "function" => "team_edit"];
                     $columns[] = ["width" => "10%", "title" => "Team Id",          "function" => "team_id", "sort_type" => "id"];
                     $columns[] = ["width" => "32%", "title" => "Team Members",     "function" => "team_members"];
                 }
                 else {
-                    $columns[] = ["width" => "3%",  "title" => "",                 "function" => "index"];
+                    $columns[] = ["width" => "3%",  "title" => "#",                "function" => "index"];
                     $columns[] = ["width" => "5%",  "title" => "Section",          "function" => "section"];
                     $columns[] = ["width" => "50%", "title" => "Team Members",     "function" => "team_members"];
                 }
             }
             else {
-                $columns[]     = ["width" => "2%",  "title" => "",                 "function" => "index"];
+                $columns[]     = ["width" => "2%",  "title" => "#",                "function" => "index"];
                 $columns[]     = ["width" => "8%", "title" => "Section",          "function" => "section"];
                 $columns[]     = ["width" => "13%", "title" => "User ID",          "function" => "user_id", "sort_type" => "id"];
                 $columns[]     = ["width" => "15%", "title" => "First Name",       "function" => "user_first", "sort_type" => "first"];

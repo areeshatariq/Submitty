@@ -38,10 +38,8 @@
         {% set graded_gradeable = late_day_info.getGradedGradeable() %}
         {% set gradeable = graded_gradeable.getGradeable() %}
         {% set class = "" %}
-        {% set id = "" %}
         {% if highlight_gradeable == gradeable.getId() %}
             {% set class = "blue-background" %}
-            {% set id = "curr-status" %}
         {% endif %}
         <tr>
             <td class="align-left {{ class }}">{{ gradeable.getTitle() }}</td>
@@ -49,9 +47,9 @@
             <td class="{{ class }}">{{ late_day_info.getAssignmentAllowedLateDays() }}</td>
             <td class="{{ class }}">{{ (late_day_info.getDaysLate() != 0) ? late_day_info.getDaysLate() : "N/A" }}</td>
             <td class="{{ class }}">{{ (late_day_info.getLateDayException() != 0) ? late_day_info.getLateDayException() : "N/A" }}</td>
-            <td class="{{ class }}" id="{{ id }}">{{ late_day_info.getStatusMessage() }}</td>
+            <td class="{{ class }}">{{ late_day_info.getStatusMessage() }}</td>
             {% if grade_inquiry_enabled %}
-                <td class="{{ class }}" id="{{ id }}">{{ gradeable.isRegradeAllowed() ? late_day_info.getGradeInquiryCount() : "N/A" }}</td>
+                <td class="{{ class }}">{{ gradeable.isRegradeAllowed() ? late_day_info.getGradeInquiryCount() : "N/A" }}</td>
             {% endif %}
             <td class="{{ class }}">{{ (late_day_info.getLateDaysCharged() != 0 ) ? late_day_info.getLateDaysCharged() : "N/A" }}</td>
         </tr>
